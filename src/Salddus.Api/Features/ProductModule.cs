@@ -8,20 +8,32 @@ public static class ProductModule
         app.MapGroup("/api/v1")
             .MapTodosApi()
             .WithDescription("Descrição")
-            .WithTags("Tag1");
+            .WithTags("Tag1")
+            .WithOpenApi();
     }
     public static RouteGroupBuilder MapTodosApi(this RouteGroupBuilder group)
     {
         group.MapGet("/", GetResultAsync)
                             .Produces<string>()
-                            .AddEndpointFilter<ProductFilter>();
+                            .AddEndpointFilter<ProductFilter>()
+                            .WithName("GetWeatherForecast")
+                            .WithDescription("Descrição");
 
         return group;
     }
-    public static async Task<IResult> GetResultAsync([FromBody] ProductByIdQuery query, [FromServices] IValidator<ProductByIdQuery> validator, [FromServices] IProductByIdQueryHandler handler)
+    public static async Task<IResult> GetResultAsync([FromBody] ProductByIdQuery query,
+    [FromServices] IValidator<ProductByIdQuery> validator,
+    [FromServices] IProductByIdQueryHandler handler)
     {
         var result = await validator.ValidateAsync(query);
-        if (!result.IsValid) return Results.BadRequest(result.Errors);
+        if (!result.IsValid) {
+            
+        foreach (var failure in result.Errors)
+        {
+            Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+        }
+            return Results.BadRequest(result.Errors);
+            }
 
         var response = await handler.Handle(query, CancellationToken.None);
         return Results.Ok(response);

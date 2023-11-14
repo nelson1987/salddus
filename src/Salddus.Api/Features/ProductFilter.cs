@@ -1,9 +1,4 @@
 namespace Salddus.Api.Features;
-// public class ValidationFilter<T> : IRouteHandlerFilter where T : class
-// {
-
-// }
-
 public class ProductFilter : IEndpointFilter
 {
     private readonly ILogger _logger;
