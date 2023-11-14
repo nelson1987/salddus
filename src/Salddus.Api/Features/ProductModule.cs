@@ -21,7 +21,7 @@ public static class ProductModule
 
         return group;
     }
-    public static async Task<IResult> GetResultAsync([FromBody] ProductByIdQuery query,
+    public static async Task<IResult> GetResultAsync([AsParameters] ProductByIdQuery query,
     [FromServices] IValidator<ProductByIdQuery> validator,
     [FromServices] IProductByIdQueryHandler handler)
     {

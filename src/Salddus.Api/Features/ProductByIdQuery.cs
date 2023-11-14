@@ -1,3 +1,7 @@
 namespace Salddus.Api.Features;
 
-public record ProductByIdQuery(int Id);
+public record ProductByIdQuery(
+    /// <summary>
+    /// Test
+    /// </summary>
+    int Id);
