@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 namespace Salddus.Api.Features;
 public static class ProductModule
 {
@@ -17,7 +18,7 @@ public static class ProductModule
 
         return group;
     }
-    public static async Task<IResult> GetResultAsync(ProductByIdQuery query, IValidator<ProductByIdQuery> validator, IProductByIdQueryHandler handler)
+    public static async Task<IResult> GetResultAsync([FromBody] ProductByIdQuery query, [FromServices] IValidator<ProductByIdQuery> validator, [FromServices] IProductByIdQueryHandler handler)
     {
         var result = await validator.ValidateAsync(query);
         if (!result.IsValid) return Results.BadRequest(result.Errors);
