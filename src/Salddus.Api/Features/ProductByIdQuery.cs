@@ -1,10 +1,10 @@
-using Swashbuckle;
-using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.Annotations;
 namespace Salddus.Api.Features;
 
 /// <summary>
 /// The id of the fruit that will be created
 /// </summary>
 /// <param name="Id" example="11"></param>
-public record ProductByIdQuery(int Id);
+public record ProductByIdQuery(
+    [SwaggerParameter("The import ID of the group to set the rule parts to", Required = true)]
+    int Id);
