@@ -8,7 +8,7 @@ public static class ProductModule
         app.MapGroup("/api/v1")
             .MapTodosApi()
             .WithDescription("Descrição")
-            .WithTags("Tag1")
+            .WithTags("Product")
             .WithOpenApi();
     }
     public static RouteGroupBuilder MapTodosApi(this RouteGroupBuilder group)
@@ -21,19 +21,27 @@ public static class ProductModule
 
         return group;
     }
+    /// <summary>
+    /// Buscar Resultado
+    /// </summary>
+    /// <param name="query"></param>
+    /// <param name="validator"></param>
+    /// <param name="handler"></param>
+    /// <returns></returns>
     public static async Task<IResult> GetResultAsync([AsParameters] ProductByIdQuery query,
     [FromServices] IValidator<ProductByIdQuery> validator,
     [FromServices] IProductByIdQueryHandler handler)
     {
         var result = await validator.ValidateAsync(query);
-        if (!result.IsValid) {
-            
-        foreach (var failure in result.Errors)
+        if (!result.IsValid)
         {
-            Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
-        }
-            return Results.BadRequest(result.Errors);
+
+            foreach (var failure in result.Errors)
+            {
+                Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
             }
+            return Results.BadRequest(result.Errors);
+        }
 
         var response = await handler.Handle(query, CancellationToken.None);
         return Results.Ok(response);

@@ -7,8 +7,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    var assemblyName = Assembly.GetExecutingAssembly().FullName?.Split(',')[0];
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{assemblyName}.xml"));
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 builder.Services.AddResponseCompression(options => options.EnableForHttps = true);
 builder.Services.AddScoped<IProductByIdQueryHandler, ProductByIdQueryHandler>();
@@ -17,7 +17,11 @@ builder.Services.AddScoped<IValidator<ProductByIdQuery>, ProductByIdQueryValidat
 var app = builder.Build();
 app.UseResponseCompression();
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
 app.UseHttpsRedirection();
 app.RegisterEndpoints();
 
