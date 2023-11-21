@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DF21E682-DE8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salddus.Api", "src\Salddus.Api\Salddus.Api.csproj", "{768C34A0-5688-442F-AC6E-3F7D86DD332F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salddus.IntegrationTests", "tests\Salddus.IntegrationTests\Salddus.IntegrationTests.csproj", "{885D10F5-C456-4215-B4A3-3BE410E61F07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +30,14 @@ Global
 		{768C34A0-5688-442F-AC6E-3F7D86DD332F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{768C34A0-5688-442F-AC6E-3F7D86DD332F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{768C34A0-5688-442F-AC6E-3F7D86DD332F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885D10F5-C456-4215-B4A3-3BE410E61F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885D10F5-C456-4215-B4A3-3BE410E61F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885D10F5-C456-4215-B4A3-3BE410E61F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885D10F5-C456-4215-B4A3-3BE410E61F07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8F1C4841-AF7A-4825-981F-613DC770EEAA} = {0C3BA582-C222-4041-BDF7-D4703E6AB780}
 		{768C34A0-5688-442F-AC6E-3F7D86DD332F} = {DF21E682-DE85-4E76-A9B8-12513551463A}
+		{885D10F5-C456-4215-B4A3-3BE410E61F07} = {0C3BA582-C222-4041-BDF7-D4703E6AB780}
 	EndGlobalSection
 EndGlobal
