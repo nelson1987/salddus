@@ -1,7 +1,12 @@
 # salddus
 Criação de aplicação de conta corrente
 
-'''sh
+
+
+
+
+
+```sh
 mkdir projetolinux
 cd projetolinux
 code .
@@ -10,9 +15,9 @@ dotnet new webapi -minimal --name FilmesApi
 dotnet new web --name FilmesApi (se for utilizar minimalApi)
 dotnet run --project FilmesApi/FilmesApi.csproj dev-certs https --trust
 dotnet new gitignore
-'''
+```
 
-'''sh
+```sh
 dotnet new xunit -o ProjetoTeste.Tests
 dotnet sln add ./ProjetoTeste.Tests/ProjetoTeste.Tests.csproj
 dotnet add ./Alura.Estacionamento.Tests/Alura.Estacionamento.Tests.csproj reference ./Alura.Estacionamento/Alura.Estacionamento.csproj 
