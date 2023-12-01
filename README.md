@@ -22,13 +22,14 @@ dotnet new xunit -o ProjetoTeste.Tests
 dotnet sln add ./ProjetoTeste.Tests/ProjetoTeste.Tests.csproj
 dotnet add ./Alura.Estacionamento.Tests/Alura.Estacionamento.Tests.csproj reference ./Alura.Estacionamento/Alura.Estacionamento.csproj 
 dotnet add package Microsoft.EntityFrameworkCore --version 6.0.10
-'''
+```
 
-''' sh
+```sh
 git add .
 git commit -m "menssagem do commit"
 git push
-'''
+```
+
 # bibliography
 https://balta.io/blog/aspnet-minimal-apis
 https://microsoft.github.io/workshop-library/full/intro-minapi/
